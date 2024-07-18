@@ -1,9 +1,14 @@
 #!/usr/bin/zsh
-$WD = cwd() 
+echo "start"
+
+
 cd ./nvim/.config/nvim
-git commit -am "commiting all changes for the day"
+
+git add .
+git commit -m "commiting all changes for the day"
 git push 
 
-cd $WD 
-git commit -am "commiting all changes for the day"
+cd ../../../ 
+git add .
+git commit -m "commiting all changes for the day"
 git push --recurse-submodules=on-demand
