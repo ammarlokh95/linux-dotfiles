@@ -27,8 +27,7 @@ fi
 
 if [[ "$1" == "shutdown" ]]; then
     echo ":: Shutdown"
-    sleep 0.5
-    systemctl poweroff
+    source ~/powero.sh
 fi
 
 if [[ "$1" == "suspend" ]]; then

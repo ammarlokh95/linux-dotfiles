@@ -7,7 +7,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- Font
-config.font = wezterm.font("JetBrainsMonoNerdFont")
+config.font = wezterm.font("FiraCode Nerd Font")
 
 -- To work with hyprland
 config.enable_wayland = false
