@@ -70,7 +70,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode thefuck ripgrep fd eza archlinux)
+plugins=(git vi-mode thefuck eza archlinux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -116,9 +116,6 @@ alias c='clear'
 alias nf='fastfetch'
 alias pf='fastfetch'
 alias ff='fastfetch'
-alias ls='eza -a --icons'
-alias ll='eza -al --icons'
-alias lt='eza -a --tree --level=1 --icons'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
