@@ -6,8 +6,8 @@
   },
   "custom/quicklink2": {
     "format": "",
-    "on-click": "brave",
-    "tooltip-format": "Open Brave"
+    "on-click": "zen-browser",
+    "tooltip-format": "Open Zen browser"
   },
   "custom/quicklink3": {
     "format": "",
