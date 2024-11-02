@@ -13,8 +13,8 @@ config.font = wezterm.font("FiraCode Nerd Font")
 config.enable_wayland = false
 
 -- Theming
-config.color_scheme = "Catppuccin Mocha"
-config.window_background_opacity = 0.7
+config.color_scheme = "Kanagawa (Gogh)"
+config.window_background_opacity = 0.8
 config.window_padding = {
 	left = 1,
 	right = 1,
