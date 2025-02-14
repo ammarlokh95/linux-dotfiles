@@ -10,7 +10,7 @@ local config = wezterm.config_builder()
 config.font = wezterm.font("FiraCode Nerd Font")
 
 -- To work with hyprland
-config.enable_wayland = false
+config.enable_wayland = true
 
 -- Theming
 config.color_scheme = "Kanagawa (Gogh)"

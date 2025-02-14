@@ -1,6 +1,7 @@
 # -----------------------------------------------------
 # CUSTOMIZATION
 # -----------------------------------------------------
+POSH=agnoster
 
 # -----------------------------------------------------
 # oh-myzsh themes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -15,12 +16,12 @@ plugins=(
     sudo
     web-search
     archlinux
+    zsh-autosuggestions
+    zsh-syntax-highlighting
     fast-syntax-highlighting
     copyfile
     copybuffer
     dirhistory
-    zsh-interactive-cd
-    zoxide
 )
 
 # Set-up oh-my-zsh
@@ -38,15 +39,10 @@ SAVEHIST=10000
 setopt appendhistory
 
 # -----------------------------------------------------
-# Starship promt
+# Prompt
 # -----------------------------------------------------
-# eval "$(starship init zsh)"
-
-# -----------------------------------------------------
-# oh-my-posh promt
-# -----------------------------------------------------
-# Custom Theme
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/EDM115-newline.omp.json)"
 
 # Shipped Theme
 # eval "$(oh-my-posh init zsh --config /usr/share/oh-my-posh/themes/agnoster.omp.json)"

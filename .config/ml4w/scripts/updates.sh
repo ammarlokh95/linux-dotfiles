@@ -6,7 +6,16 @@
 #  \___/| .__/ \__,_|\__,_|\__\___||___/ 
 #       |_|                              
 #  
-# Requires pacman-contrib trizen
+
+script_name=$(basename "$0")
+
+# Count the instances
+instance_count=$(ps aux | grep -F "$script_name" | grep -v grep | grep -v $$ | wc -l)
+
+if [ $instance_count -gt 1 ]; then
+    sleep $instance_count
+fi
+
 
 # ----------------------------------------------------- 
 # Define threshholds for color indicators
@@ -15,23 +24,42 @@
 threshhold_green=0
 threshhold_yellow=25
 threshhold_red=100
-aur_helper="$(cat ~/.config/ml4w/settings/aur.sh)"
+install_platform="$(cat ~/.config/ml4w/settings/platform.sh)"
 
-# ----------------------------------------------------- 
-# Calculate available updates pacman and aur (with trizen)
-# ----------------------------------------------------- 
+# Check if platform is supported
+case $install_platform in
+    arch)
+        aur_helper="$(cat ~/.config/ml4w/settings/aur.sh)"
 
-if ! updates_arch=$(checkupdates 2> /dev/null | wc -l ); then
-    updates_arch=0
-fi
+        # ----------------------------------------------------- 
+        # Calculate available updates
+        # ----------------------------------------------------- 
 
-if ! updates_aur=$($aur_helper -Qu --aur --quiet | wc -l); then
-    updates_aur=0
-fi
+        # flatpak remote-ls --updates
 
-# flatpak remote-ls --updates
+        # -----------------------------------------------------------------------------
+        # Check for pacman or checkupdates-with-aur database lock and wait if necessary
+        # -----------------------------------------------------------------------------
+        check_lock_files() {
+            local pacman_lock="/var/lib/pacman/db.lck"
+            local checkup_lock="${TMPDIR:-/tmp}/checkup-db-${UID}/db.lck"
 
-updates=$(("$updates_arch" + "$updates_aur"))
+            while [ -f "$pacman_lock" ] || [ -f "$checkup_lock" ]; do
+                sleep 1
+            done
+        }
+
+        check_lock_files
+
+        updates=$(checkupdates-with-aur | wc -l)
+    ;;
+    fedora)
+        updates=$(dnf check-update -q | grep -c ^[a-z0-9])
+    ;;
+    *)
+        updates=0
+    ;;
+esac
 
 # ----------------------------------------------------- 
 # Output in JSON format for Waybar Module custom-updates
@@ -48,7 +76,7 @@ if [ "$updates" -gt $threshhold_red ]; then
 fi
 
 if [ "$updates" -gt $threshhold_green ]; then
-    printf '{"text": "%s", "alt": "%s", "tooltip": "Click to update your system", "class": "%s"}' "$updates" "$updates" "$updates" "$css_class"
+    printf '{"text": "%s", "alt": "%s", "tooltip": "Click to update your system", "class": "%s"}' "$updates" "$updates" "$css_class"
 else
     printf '{"text": "0", "alt": "0", "tooltip": "No updates available", "class": "green"}'
 fi

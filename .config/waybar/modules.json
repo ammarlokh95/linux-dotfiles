@@ -20,7 +20,7 @@
       "default": ""
     },
     "persistent-workspaces": {
-            "*": 5
+      "*": 5
     }
   },
 
@@ -55,10 +55,9 @@
 
   // ML4W Welcome App
   "custom/ml4w-welcome": {
-    "on-click": "ags -t sidebar",
-    "on-click-right": "sleep 0.1 && ~/.config/ml4w/apps/ML4W_Welcome-x86_64.AppImage",
+    "on-click": "flatpak run com.ml4w.sidebar",
     "format": " ",
-    "tooltip-format": "Open Sidebar"
+    "tooltip-format": "Open ML4W Sidebar App"
   },
 
   // Empty
@@ -66,7 +65,7 @@
     "format": ""
   },
 
-  // Empty
+    // Tools
   "custom/tools": {
     "format": "",
     "tooltip-format": "Tools"
@@ -78,16 +77,16 @@
     "on-click": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh",
     "on-click-right": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh d",
     "on-click-middle": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh w",
-    "tooltip-format": "Clipboard Manager"
+    "tooltip-format": "Left: Open clipboard Manager\nRight: Delete an entry\nMiddle: Clear list"
   },
 
   // Updates Count
   "custom/updates": {
-    "format": "  {}",
+    "format": "  {}",
     "escape": true,
     "return-type": "json",
     "exec": "~/.config/ml4w/scripts/updates.sh",
-    "restart-interval": 60,
+    "interval": 1800,
     "on-click": "$(cat ~/.config/ml4w/settings/terminal.sh) --class dotfiles-floating -e ~/.config/ml4w/scripts/installupdates.sh",
     "on-click-right": "~/.config/ml4w/settings/software.sh"
   },
@@ -95,7 +94,7 @@
   // Wallpaper
   "custom/wallpaper": {
     "format": "",
-    "on-click": "waypaper",
+    "on-click": "bash -c waypaper &",
     "on-click-right": "~/.config/hypr/scripts/wallpaper-effects.sh",
     "tooltip-format": "Left: Select a wallpaper\nRight: Select wallpaper effect"
   },
@@ -110,7 +109,7 @@
   // Settings
   "custom/settings": {
     "format": "",
-    "on-click": "~/.config/ml4w/apps/ML4W_Dotfiles_Settings-x86_64.AppImage",
+    "on-click": "sleep 0.1 && com.ml4w.dotfilessettings",
     "tooltip-format": "ML4W Dotfiles Settings"
   },
 
@@ -147,7 +146,7 @@
     // START APPS LABEL
     "format": "Apps",
     // END APPS LABEL
-    "on-click": "sleep 0.2;rofi -show drun -replace",
+    "on-click": "sleep 0.2;pkill rofi || rofi -show drun -replace",
     "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
     "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
   },
@@ -155,7 +154,7 @@
   // Rofi Application Launcher
   "custom/appmenuicon": {
     "format": "",
-    "on-click": "rofi -show drun -replace",
+    "on-click": "sleep 0.2;rofi -show drun -replace",
     "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
     "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
   },
@@ -163,8 +162,31 @@
   // Power Menu
   "custom/exit": {
     "format": "",
-    "on-click": "wlogout",
-    "tooltip-format": "Power Menu"
+    "on-click": "~/.config/ml4w/scripts/wlogout.sh",
+    "on-click-right": "hyprlock",
+    "tooltip-format": "Left: Power menu\nRight: Lock screen"
+  },
+
+  // SwayNC
+  "custom/notification": {
+    "tooltip-format": "Left: Notifications\nRight: Do not disturb",
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   },
 
   // Hyprshade
@@ -183,8 +205,7 @@
     "exec-on-event": true,
     "interval": 60,
     "exec": "~/.config/hypr/scripts/hypridle.sh status",
-    "on-click": "~/.config/hypr/scripts/hypridle.sh toggle",
-    "on-click-right": "hyprlock"
+    "on-click": "~/.config/hypr/scripts/hypridle.sh toggle"
   },
 
   // Keyboard State
@@ -207,11 +228,9 @@
   // Clock
   "clock": {
     "format": "{:%H:%M %a}",
-    // "timezone": "America/New_York",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    // START CLOCK FORMAT
-    "format-alt": "{:%Y-%m-%d}"
-    // END CLOCK FORMAT
+    "on-click": "flatpak run com.ml4w.calendar",
+    "timezone": "",
+    "tooltip": false
   },
 
   // System
@@ -223,13 +242,13 @@
   // CPU
   "cpu": {
     "format": "/ C {usage}% ",
-    "on-click": "~/.config/ml4w/settings/systeminfo.sh"
+    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
   },
 
   // Memory
   "memory": {
     "format": "/ M {}% ",
-    "on-click": "~/.config/ml4w/settings/systeminfo.sh"
+    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
   },
 
   // Harddisc space used
@@ -237,7 +256,7 @@
     "interval": 30,
     "format": "D {percentage_used}% ",
     "path": "/",
-    "on-click": "~/.config/ml4w/settings/systeminfo.sh"
+    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
   },
 
   "hyprland/language": {
@@ -275,8 +294,8 @@
   "group/links": {
     "orientation": "horizontal",
     "modules": [
-            //"custom/chatgpt",
-      "custom/empty"      
+//      "custom/chatgpt",
+      "custom/empty"
     ]
   },
 
@@ -298,16 +317,16 @@
   // Network
   "network": {
     "format": "{ifname}",
-    "format-wifi": "   {signalStrength}%",
+    "format-wifi": " {essid} ({signalStrength}%)",
     "format-ethernet": "  {ifname}",
-    "format-disconnected": "Disconnected",
+    "format-disconnected": "Disconnected ⚠",
     "tooltip-format": " {ifname} via {gwaddri}",
     "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "$(cat ~/.config/ml4w/settings/terminal.sh) --class dotfiles-floating -e nmtui",
-    "on-click-right": "~/.config/ml4w/settings/networkmanager.sh"
+    "on-click": "~/.config/ml4w/settings/networkmanager.sh",
+    "on-click-right": "~/.config/ml4w/scripts/nm-applet.sh toggle",
   },
 
   // Battery
