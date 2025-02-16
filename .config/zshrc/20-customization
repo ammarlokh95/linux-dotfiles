@@ -16,12 +16,14 @@ plugins=(
     sudo
     web-search
     archlinux
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    fast-syntax-highlighting
+    zsh-interactive-cd
+    zsh-navigation-tools
     copyfile
     copybuffer
     dirhistory
+    npm
+    zoxide
+    node
 )
 
 # Set-up oh-my-zsh

@@ -75,7 +75,6 @@ plugins=(git vi-mode thefuck eza archlinux)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-eval "$(zoxide init --cmd cd zsh)"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
