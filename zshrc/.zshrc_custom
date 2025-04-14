@@ -1,2 +1,5 @@
 eval "$(zoxide init --cmd cd zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export GEMINI_API_KEY='AIzaSyCZkvqYHfF33cEiMF9MbGCVW_fLyuIG2CM'
+path+=('/opt/cuda/bin/')
+export PATH
