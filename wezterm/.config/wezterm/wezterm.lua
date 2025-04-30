@@ -14,6 +14,7 @@ config.enable_wayland = false
 
 -- Theming
 config.color_scheme = "rose-pine-ammar"
+config.color_scheme = "rose-pine"
 config.window_padding = {
 	left = 1,
 	right = 1,
