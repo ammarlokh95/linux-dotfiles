@@ -5,18 +5,18 @@
     "green": "#9ccfd8",
     "red": "#eb6f92",
     "white": "#faf4ed",
-    "main": "#ebbcba",
-    "moon": "#ea9a97",
-    "dawn": "#d7827e"
+    "main": "#9ccfd8",
+    "moon": "#3e8fb0",
+    "dawn": "#56949f"
   },
   "secondary_prompt": {
     "template": "<p:main,transparent>\ue0b6</><,p:main> > </><p:main,transparent>\ue0b0</> ",
-    "foreground": "p:black",
+    "foreground": "p:white",
     "background": "transparent"
   },
   "transient_prompt": {
     "template": "<p:main,transparent>\ue0b6</><,p:main> {{ .Folder }} </><p:main,transparent>\ue0b0</> ",
-    "foreground": "p:black",
+    "foreground": "p:white",
     "background": "transparent"
   },
   "upgrade": {
@@ -84,32 +84,8 @@
           "style": "powerline"
         },
         {
-          "properties": {
-            "branch_template": "{{ trunc 25 .Branch }}",
-            "fetch_status": true,
-            "fetch_upstream_icon": true
-          },
-          "template": " {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
-          "foreground": "p:black",
-          "powerline_symbol": "\ue0b0",
-          "background": "p:green",
-          "type": "git",
-          "style": "powerline",
-          "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:black{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:white{{ end }}",
-            "{{ if gt .Ahead 0 }}p:white{{ end }}"
-          ],
-          "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:main{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
-            "{{ if gt .Ahead 0 }}#49416D{{ end }}",
-            "{{ if gt .Behind 0 }}#7A306C{{ end }}"
-          ]
-        },
-        {
           "template": " \uf0e7 ",
-          "foreground": "p:white",
+          "foreground": "p:black",
           "powerline_symbol": "\ue0b0",
           "background": "p:main",
           "type": "root",
@@ -133,15 +109,41 @@
       ]
     },
     {
-      "type": "rprompt",
+      "type": "prompt",
+      "alignment": "right",
       "segments": [
+        {
+          "properties": {
+            "branch_template": "{{ trunc 25 .Branch }}",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "template": " {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "foreground": "p:black",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "background": "p:green",
+          "type": "git",
+          "style": "diamond",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:black{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:white{{ end }}",
+            "{{ if gt .Ahead 0 }}p:white{{ end }}"
+          ],
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:main{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
+            "{{ if gt .Ahead 0 }}#49416D{{ end }}",
+            "{{ if gt .Behind 0 }}#7A306C{{ end }}"
+          ]
+        },
         {
           "properties": {
             "display_mode": "files",
             "fetch_package_manager": false,
             "home_enabled": false
           },
-          "template": "\ue718 ",
+          "template": " \ue718 ",
           "foreground": "p:green",
           "background": "transparent",
           "type": "node",
@@ -151,7 +153,7 @@
           "properties": {
             "fetch_version": false
           },
-          "template": "\ue626 ",
+          "template": " \ue626 ",
           "foreground": "p:dawn",
           "background": "transparent",
           "type": "go",
@@ -163,14 +165,14 @@
             "fetch_version": false,
             "fetch_virtual_env": false
           },
-          "template": "\ue235 ",
+          "template": " \ue235 ",
           "foreground": "p:main",
           "background": "transparent",
           "type": "python",
           "style": "plain"
         },
         {
-          "template": "in <p:dawn><b>{{ .Name }}</b></> ",
+          "template": " in <p:dawn><b>{{ .Name }}</b></> ",
           "foreground": "p:white",
           "background": "transparent",
           "type": "shell",
@@ -184,6 +186,19 @@
           "style": "plain"
         }
       ]
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#5e81ac",
+          "style": "plain",
+          "template": " \ue602 ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
     }
   ],
   "version": 3,
