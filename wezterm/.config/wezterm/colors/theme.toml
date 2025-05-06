@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    "#26233a",
+    "#eb6f92",
+    "#9ccfd8",
+    "#f6c177",
+    "#31748f",
+    "#c4a7e7",
+    "#ebbcba",
+    "#e0def4",
+]
+background = "#191724"
+brights = [
+    "#6e6a86",
+    "#eb6f92",
+    "#9ccfd8",
+    "#f6c177",
+    "#31748f",
+    "#c4a7e7",
+    "#ebbcba",
+    "#e0def4",
+]
+cursor_bg = "#eb6f92"
+cursor_border = "#eb6f92"
+cursor_fg = "#e0def4"
+foreground = "#e0def4"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "rose-pine-ammar"
+

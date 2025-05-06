@@ -8,13 +8,12 @@ local config = wezterm.config_builder()
 
 -- Font
 config.font = wezterm.font("FiraCode Nerd Font")
-
+config.font_size = 14
 -- To work with hyprland
 config.enable_wayland = false
 
 -- Theming
-config.color_scheme = "Catppuccin Mocha"
-config.window_background_opacity = 0.7
+config.color_scheme = "rose-pine-ammar"
 config.window_padding = {
 	left = 1,
 	right = 1,
