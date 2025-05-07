@@ -10,11 +10,10 @@ local config = wezterm.config_builder()
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 14
 -- To work with hyprland
-config.enable_wayland = false
+config.enable_wayland = true
 
 -- Theming
 config.color_scheme = "rose-pine-ammar"
-config.color_scheme = "rose-pine"
 config.window_padding = {
 	left = 1,
 	right = 1,
