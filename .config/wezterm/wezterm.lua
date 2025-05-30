@@ -10,20 +10,22 @@ local config = wezterm.config_builder()
 config.font = wezterm.font("FiraCode Nerd Font")
 
 -- To work with hyprland
-config.enable_wayland = false
+config.enable_wayland = true
 
 -- Theming
-config.color_scheme = "Kanagawa (Gogh)"
-config.window_background_opacity = 0.8
+local theme = wezterm.plugin.require("https://github.com/neapsix/wezterm").main
+config.colors = theme.colors()
+config.window_frame = theme.window_frame()
 config.window_padding = {
 	left = 1,
 	right = 1,
 	top = 3,
 	bottom = 2,
 }
+
 -- keys
 local act = wezterm.action
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
+config.leadser = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
 
 local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"
