@@ -25,7 +25,7 @@ config.window_padding = {
 
 -- keys
 local act = wezterm.action
-config.leadser = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1500 }
 
 local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"
