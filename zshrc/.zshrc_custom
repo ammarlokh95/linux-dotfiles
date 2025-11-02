@@ -2,4 +2,7 @@ eval "$(zoxide init --cmd cd zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export GEMINI_API_KEY='AIzaSyCZkvqYHfF33cEiMF9MbGCVW_fLyuIG2CM'
 path+=('/opt/cuda/bin/')
+path+=('~/openrgb/pkg/openrgb/usr/bin/')
+alias zigd="~/Projects/zig-projs/zig-build/zig-0.16.0-dev.932+6568f0f75/build/stage3/bin/zig"
 export PATH
+bindkey -v
