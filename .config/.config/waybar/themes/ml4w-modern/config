@@ -49,10 +49,9 @@
         "power-profiles-daemon",
         "group/hardware",
         "group/tools",
-"tray",
+        "tray",
         "custom/notification",
         "custom/exit",
-        "custom/ml4w-welcome",
         "clock"
     ]
 }
