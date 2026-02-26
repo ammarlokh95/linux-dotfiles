@@ -83,11 +83,11 @@ echo ":: Execute matugen with $used_wallpaper"
 $HOME/.cargo/bin/matugen image $used_wallpaper -m "dark"
 
 # -----------------------------------------------------
-# Execute wallust
+# Execute wallust -- Generates terminal palette
 # -----------------------------------------------------
 
-echo ":: Execute wallust with $used_wallpaper"
-$HOME/.cargo/bin/wallust run $used_wallpaper
+# echo ":: Execute wallust with $used_wallpaper"
+# $HOME/.cargo/bin/wallust run $used_wallpaper
 
 # -----------------------------------------------------
 # Reload Waybar
