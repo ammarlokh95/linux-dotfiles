@@ -5,7 +5,7 @@
 position = "top-right"
 
 # Margin offsets in pixels (only effective on anchored edges).
-margin_top = 10
+margin_top = 40
 margin_right = 10
 margin_bottom = 10
 margin_left = 10
