@@ -1,1 +1,1 @@
-blueman-manager
+wifi-manager --toggle

@@ -300,7 +300,8 @@
   // Network
   "network": {
     "format": "{ifname}",
-    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-disabled": " ",
+    "format-wifi": " ",
     "format-ethernet": "  {ifname}",
     "format-disconnected": "Disconnected ⚠",
     "tooltip-format": " {ifname} via {gwaddri}",
@@ -364,11 +365,11 @@
 
   // Bluetooth
   "bluetooth": {
-    "format": " {status}",
+    "format": "",
     "format-disabled": "",
-    "format-off": "",
+    "format-off": "",
     "interval": 30,
-    "on-click": "blueman-manager",
+    "on-click": "~/.config/settings/networkmanager.sh",
     "format-no-controller": ""
   },
 
