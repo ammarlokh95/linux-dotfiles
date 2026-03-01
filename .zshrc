@@ -47,3 +47,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 
 # OpenClaw Completion
 source <(openclaw completion --shell zsh)
+if [ -z "$TMUX" ]; then
+    tmux attach-session -t Default || tmux new-session -s Default
+    exit "$?"
+fi
