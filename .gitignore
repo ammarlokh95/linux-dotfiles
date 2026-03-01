@@ -1,2 +1,7 @@
 !.*
 .config/ml4w/cache/square_wallpaper.png
+
+
+# Added by cargo
+
+/target
