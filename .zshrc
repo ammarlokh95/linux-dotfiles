@@ -7,15 +7,6 @@
 # -----------------------------------------------------
 # ML4W zshrc loader
 # -----------------------------------------------------
-
-# DON'T CHANGE THIS FILE
-
-# You can define your custom configuration by adding
-# files in ~/.config/zshrc
-# or by creating a folder ~/.config/zshrc/custom
-# with copies of files from ~/.config/zshrc
-# -----------------------------------------------------
-
 # -----------------------------------------------------
 # Load modular configarion
 # -----------------------------------------------------
@@ -48,6 +39,6 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 # OpenClaw Completion
 source <(openclaw completion --shell zsh)
 if [ -z "$TMUX" ]; then
-    tmux attach-session -t Default || tmux new-session -s Default
-    exit "$?"
+    tmux new 
+  exit "$?"
 fi
