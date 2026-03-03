@@ -29,7 +29,7 @@ fi
 
 
 # bun completions
-[ -s "/home/slice/.bun/_bun" ] && source "/home/slice/.bun/_bun"
+[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -38,7 +38,9 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 
 # OpenClaw Completion
 source <(openclaw completion --shell zsh)
+
+# launch tmux on start
 if [ -z "$TMUX" ]; then
-    tmux new 
+    tmux attach -t Default || tmux new -s Default
   exit "$?"
 fi
